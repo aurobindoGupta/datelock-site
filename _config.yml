@@ -1,0 +1,17 @@
+title: DateLock
+description: The delivery date always lands on the order — and checkout never breaks.
+url: https://getdatelock.com
+theme: minima
+permalink: pretty
+
+# Brand mark in the header doubles as Home; nav lists only the legal pages.
+header_pages:
+  - privacy-policy.md
+  - terms-of-use.md
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
