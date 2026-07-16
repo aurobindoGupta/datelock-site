@@ -32,4 +32,4 @@ We may update these Terms; the "Last updated" date reflects the latest version.
 
 ## Contact
 
-**support@getdatelock.com**.
+**aurogpt10@gmail.com**.

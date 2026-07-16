@@ -16,4 +16,4 @@ DateLock is a Shopify app for date-sensitive stores — bakeries, florists, meal
 
 ## Contact
 
-For questions or support, email **support@getdatelock.com**.
+For questions or support, email **aurogpt10@gmail.com**.

@@ -53,4 +53,4 @@ We may update this policy. Material changes will be reflected by the "Last updat
 
 ## Contact
 
-Questions about this policy or your data: **support@getdatelock.com**.
+Questions about this policy or your data: **aurogpt10@gmail.com**.
