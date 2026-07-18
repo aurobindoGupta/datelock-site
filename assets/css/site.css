@@ -1,6 +1,6 @@
 /* ==========================================================================
    DateLock — site design system  ("warm editorial trust")
-   Emerald + cream paper, Fraunces display / Hanken Grotesk body.
+   Emerald + cream paper, Newsreader display / Hanken Grotesk body.
    ========================================================================== */
 
 :root {
@@ -46,7 +46,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Newsreader", Georgia, serif;
   font-weight: 600;
   line-height: 1.08;
   letter-spacing: -0.01em;
@@ -100,7 +100,7 @@ img { max-width: 100%; }
   border-bottom: 1px solid var(--line-soft);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-.brand { display: inline-flex; align-items: center; gap: .55em; font-family: "Fraunces", serif; font-weight: 600; font-size: 1.32rem; color: var(--ink); letter-spacing: -.02em; }
+.brand { display: inline-flex; align-items: center; gap: .55em; font-family: "Newsreader", serif; font-weight: 600; font-size: 1.32rem; color: var(--ink); letter-spacing: -.02em; }
 .brand:hover { color: var(--ink); }
 .brand .mark {
   width: 32px; height: 32px; border-radius: 9px; flex: none;
@@ -145,7 +145,7 @@ img { max-width: 100%; }
 }
 .oc-meta .k { display: flex; align-items: center; gap: .55em; font-size: .82rem; color: var(--ink-soft); font-weight: 600; }
 .oc-meta .k svg { width: 16px; height: 16px; color: var(--green); }
-.oc-meta .v { font-family: "Fraunces", serif; font-weight: 600; color: var(--green-deep); font-size: 1.02rem; }
+.oc-meta .v { font-family: "Newsreader", serif; font-weight: 600; color: var(--green-deep); font-size: 1.02rem; }
 .mock .float-chip {
   position: absolute; z-index: 3; left: -22px; top: -20px; bottom: auto;
   background: var(--card); box-shadow: var(--shadow-md); border: 1px solid var(--line);
@@ -163,7 +163,7 @@ img { max-width: 100%; }
 .trust-strip .wrap { display: flex; align-items: center; gap: 12px 34px; flex-wrap: wrap; justify-content: center; padding-top: 20px; padding-bottom: 20px; }
 .trust-strip .label { font-size: .82rem; color: var(--ink-faint); font-weight: 600; letter-spacing: .04em; }
 .trust-strip .verticals { display: flex; gap: 10px 22px; flex-wrap: wrap; }
-.trust-strip .verticals span { font-family: "Fraunces", serif; font-size: 1.05rem; color: var(--ink-soft); font-weight: 500; }
+.trust-strip .verticals span { font-family: "Newsreader", serif; font-size: 1.05rem; color: var(--ink-soft); font-weight: 500; }
 
 /* ==========================================================================
    Sections
@@ -204,7 +204,7 @@ section { padding: 88px 0; }
 .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; counter-reset: step; }
 .step { position: relative; padding-top: 18px; }
 .step .num {
-  font-family: "Fraunces", serif; font-size: 2.4rem; font-weight: 600; color: var(--green);
+  font-family: "Newsreader", serif; font-size: 2.4rem; font-weight: 600; color: var(--green);
   line-height: 1; display: flex; align-items: baseline; gap: .3em;
 }
 .step .num::before { counter-increment: step; content: "0" counter(step); }
@@ -216,10 +216,17 @@ section { padding: 88px 0; }
 /* see it in action (real screenshots) */
 .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .shot { margin: 0; }
-.shot img { width: 100%; border-radius: 14px; border: 1px solid var(--line); box-shadow: var(--shadow-md); display: block; background: #fff; transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+.shot img { width: 100%; border-radius: 14px; border: 1px solid var(--line); box-shadow: var(--shadow-md); display: block; background: #fff; cursor: zoom-in; transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
 .shot:hover img { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .shot figcaption { margin-top: 15px; font-size: .95rem; color: var(--ink-soft); font-weight: 500; display: flex; align-items: center; gap: .6em; }
 .shot figcaption .n { width: 22px; height: 22px; border-radius: 50%; background: var(--green-tint); color: var(--green-deep); font-size: .78rem; font-weight: 700; display: grid; place-items: center; flex: none; }
+
+/* lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(20,18,14,.84); backdrop-filter: blur(5px); display: grid; place-items: center; padding: 4vw; cursor: zoom-out; animation: rise .2s var(--ease); }
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: 100%; max-height: 92vh; border-radius: 12px; box-shadow: 0 30px 90px rgba(0,0,0,.55); }
+.lightbox .lb-close { position: fixed; top: 20px; right: 26px; width: 42px; height: 42px; border-radius: 50%; border: none; background: rgba(255,255,255,.14); color: #fff; font-size: 1.4rem; cursor: pointer; line-height: 1; }
+.lightbox .lb-close:hover { background: rgba(255,255,255,.26); }
 
 /* pricing */
 .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
@@ -233,8 +240,8 @@ section { padding: 88px 0; }
   background: var(--green); color: #fff; font-size: .72rem; font-weight: 700;
   letter-spacing: .08em; text-transform: uppercase; padding: .34em .8em; border-radius: 999px;
 }
-.plan .pname { font-family: "Fraunces", serif; font-size: 1.4rem; font-weight: 600; }
-.plan .pprice { margin: 14px 0 4px; font-size: 2.4rem; font-weight: 700; font-family: "Fraunces", serif; letter-spacing: -.02em; }
+.plan .pname { font-family: "Newsreader", serif; font-size: 1.4rem; font-weight: 600; }
+.plan .pprice { margin: 14px 0 4px; font-size: 2.4rem; font-weight: 700; font-family: "Newsreader", serif; letter-spacing: -.02em; }
 .plan .pprice span { font-size: .95rem; font-weight: 500; color: var(--ink-faint); font-family: "Hanken Grotesk", sans-serif; }
 .plan .pcap { color: var(--ink-soft); font-size: .96rem; }
 .plan ul { list-style: none; padding: 0; margin: 22px 0 26px; display: flex; flex-direction: column; gap: 11px; }
