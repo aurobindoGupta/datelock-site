@@ -20,8 +20,13 @@ DateLock is installed by **merchants** on their Shopify stores. We interact with
 - **Order delivery dates.** When an order is placed, Shopify sends DateLock an `orders/create` webhook. We read the customer-selected **delivery date** from the order's attributes and write it back onto the order (as an order metafield and tag) so it is visible to your fulfillment team. The delivery date is a calendar date — not personal information.
 - **Usage metering.** To enforce plan limits, we store a per-order record (your store domain, the order ID, and the calendar month) so we can count delivery-date orders per month. The order ID is used only to avoid double-counting.
 - **Billing state.** We store your plan tier and related billing status. Payments are handled by **Shopify** — DateLock never sees or stores card or bank details.
+- **Operational logs.** Our hosting provider generates automated technical logs (e.g. error and request logs) that can include a store domain and timestamps. We use these only to operate, secure, and debug the service, and retain them for a short period.
 
 We do **not** collect or store shoppers' names, email addresses, shipping addresses, or payment information.
+
+## Legal basis for processing
+
+For merchants in the EEA/UK, we process this data to perform our agreement with you (providing the app) and for our legitimate interests in operating, securing, and improving the service. Where we process any personal data belonging to your shoppers, we act **as your processor**, on your instructions and behalf, under our [Data Processing Agreement]({{ '/data-processing-agreement/' | relative_url }}); you, the merchant, are the controller.
 
 ## Where your data is stored
 
@@ -33,6 +38,10 @@ DateLock is hosted on **Render** (United States), including a managed PostgreSQL
 - **Render** — application hosting and database.
 - **Resend** — transactional email (e.g., a notice if your store approaches its plan limit).
 
+## Cookies
+
+The embedded app uses only **essential** cookies and session tokens needed to authenticate your Shopify session and run the app. We do **not** use advertising, analytics, or cross-site tracking cookies, and this marketing site sets no tracking cookies.
+
 ## Data requests, deletion & GDPR
 
 DateLock implements Shopify's mandatory privacy webhooks:
@@ -42,6 +51,16 @@ DateLock implements Shopify's mandatory privacy webhooks:
 - **`shop/redact`** — after a store uninstalls DateLock, Shopify sends this webhook and we delete the store's data.
 
 When you **uninstall** DateLock, we stop collecting new data and delete your store's data on the `shop/redact` signal.
+
+## Your privacy rights
+
+Depending on where you live, you may have rights to access, correct, delete, restrict, or object to the processing of your personal data, or to data portability. Because DateLock holds almost no personal data, most requests are handled directly in your Shopify admin; for anything within our control, contact us and we will respond. You also have the right to lodge a complaint with your local data protection authority.
+
+**California (CCPA/CPRA).** We do **not** sell or share personal information, and have never done so. California residents may exercise the access and deletion rights above by contacting us, and we will not discriminate against you for doing so.
+
+## Children
+
+DateLock is a business tool for merchants and is not directed to children. We do not knowingly collect personal information from children under 16.
 
 ## Data retention
 

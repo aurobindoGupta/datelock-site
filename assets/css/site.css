@@ -103,11 +103,9 @@ img { max-width: 100%; }
 .brand { display: inline-flex; align-items: center; gap: .55em; font-family: "Fraunces", serif; font-weight: 600; font-size: 1.32rem; color: var(--ink); letter-spacing: -.02em; }
 .brand:hover { color: var(--ink); }
 .brand .mark {
-  width: 30px; height: 30px; border-radius: 9px; flex: none;
-  background: linear-gradient(150deg, var(--green-brt), var(--green-deep));
-  display: grid; place-items: center; box-shadow: var(--shadow-sm);
+  width: 32px; height: 32px; border-radius: 9px; flex: none;
+  object-fit: cover; display: block; box-shadow: var(--shadow-sm);
 }
-.brand .mark svg { width: 18px; height: 18px; color: #fff; }
 .nav-links { display: flex; align-items: center; gap: 30px; }
 .nav-links a.navlink { color: var(--ink-soft); font-weight: 500; font-size: .95rem; }
 .nav-links a.navlink:hover { color: var(--ink); }
@@ -215,6 +213,14 @@ section { padding: 88px 0; }
 .step .rule { height: 1px; background: var(--line); margin-top: 18px; position: relative; }
 .step .rule::after { content: ""; position: absolute; left: 0; top: 0; width: 34px; height: 1px; background: var(--green); }
 
+/* see it in action (real screenshots) */
+.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.shot { margin: 0; }
+.shot img { width: 100%; border-radius: 14px; border: 1px solid var(--line); box-shadow: var(--shadow-md); display: block; background: #fff; transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+.shot:hover img { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.shot figcaption { margin-top: 15px; font-size: .95rem; color: var(--ink-soft); font-weight: 500; display: flex; align-items: center; gap: .6em; }
+.shot figcaption .n { width: 22px; height: 22px; border-radius: 50%; background: var(--green-tint); color: var(--green-deep); font-size: .78rem; font-weight: 700; display: grid; place-items: center; flex: none; }
+
 /* pricing */
 .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
 .plan {
@@ -304,6 +310,7 @@ section { padding: 88px 0; }
   .mock { max-width: 420px; }
   .band .inner { grid-template-columns: 1fr; gap: 28px; }
   .feat-grid, .steps, .price-grid { grid-template-columns: 1fr 1fr; }
+  .shots { grid-template-columns: 1fr; max-width: 460px; margin-left: auto; margin-right: auto; }
   .foot-grid { grid-template-columns: 1fr 1fr; }
   .foot-brand { grid-column: 1 / -1; }
 }
