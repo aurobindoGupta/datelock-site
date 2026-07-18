@@ -12,6 +12,7 @@ DateLock is a Shopify app for date-sensitive stores — bakeries, florists, meal
 <p class="home-cta">
   <a class="btn btn-primary" href="{{ '/privacy-policy/' | relative_url }}">Privacy Policy</a>
   <a class="btn btn-ghost" href="{{ '/terms-of-use/' | relative_url }}">Terms of Use</a>
+  <a class="btn btn-ghost" href="{{ '/data-processing-agreement/' | relative_url }}">Data Processing Agreement</a>
 </p>
 
 ## Contact

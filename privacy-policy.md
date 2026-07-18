@@ -6,9 +6,9 @@ permalink: /privacy-policy/
 
 # Privacy Policy
 
-_Last updated: 16 July 2026_
+_Last updated: 18 July 2026_
 
-This Privacy Policy explains what data the **DateLock** app ("DateLock", "we", "us") collects when a merchant installs it on their Shopify store, how we use it, and the choices available. DateLock is a delivery-date app for Shopify stores. This is a draft policy and may be updated before public release.
+This Privacy Policy explains what data the **DateLock** app ("DateLock", "we", "us") collects when a merchant installs it on their Shopify store, how we use it, and the choices available. DateLock is a delivery-date app for Shopify stores. Merchants: see also our [Data Processing Agreement]({{ '/data-processing-agreement/' | relative_url }}).
 
 ## Who this applies to
 

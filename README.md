@@ -4,8 +4,9 @@ Marketing + legal site for the **DateLock** Shopify app. Static Jekyll site serv
 by **GitHub Pages** at the custom domain **getdatelock.com** (see `CNAME`).
 
 - `index.md` — landing page
-- `privacy-policy.md` — Privacy Policy (draft; used for the App Store listing's required privacy URL)
-- `terms-of-use.md` — Terms of Use (draft)
+- `privacy-policy.md` — Privacy Policy (used for the App Store listing's required privacy URL)
+- `terms-of-use.md` — Terms of Use
+- `data-processing-agreement.md` — merchant DPA (GDPR Art. 28; mirrors `datelock/docs/DPA.md` — keep in sync)
 - `assets/` — favicons (from the app's `brand/icons`)
 
 Separate repo from the app (`shopify_datelock`) so it can't be knocked out by an
@@ -20,5 +21,5 @@ app deploy and has no cold start.
 Until the domain is live, the site is reachable at `https://<user>.github.io/<repo>/`.
 
 ## TODO before release
-Legal-review the privacy policy + terms; build a proper landing page. (See the
-DateLock task list / Phase 4 04-05.)
+Optional lawyer pass on the privacy policy + terms + DPA (self-authored, launch-ready);
+build a proper landing page. (See the DateLock task list / Phase 4 04-05.)

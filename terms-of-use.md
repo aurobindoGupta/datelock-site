@@ -6,9 +6,9 @@ permalink: /terms-of-use/
 
 # Terms of Use
 
-_Last updated: 16 July 2026_
+_Last updated: 18 July 2026_
 
-These Terms govern your use of the **DateLock** Shopify app. This is a draft and may be updated before public release. By installing or using DateLock, you agree to these Terms.
+These Terms govern your use of the **DateLock** Shopify app. By installing or using DateLock, you agree to these Terms.
 
 ## The service
 
@@ -17,6 +17,10 @@ DateLock lets your customers choose a delivery or pickup date at checkout, requi
 ## Billing
 
 Paid plans are billed through **Shopify**'s billing. Prices, plan limits, and any free tier are shown at the point of subscription. You can change or cancel your plan at any time through Shopify; billing stops when you uninstall.
+
+## Data protection
+
+How we handle data is described in our [Privacy Policy]({{ '/privacy-policy/' | relative_url }}). For merchants, our [Data Processing Agreement]({{ '/data-processing-agreement/' | relative_url }}) is incorporated into these Terms and governs our processing of personal data on your behalf.
 
 ## Acceptable use
 
