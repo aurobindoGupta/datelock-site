@@ -149,7 +149,7 @@ img { max-width: 100%; }
 .oc-meta .k svg { width: 16px; height: 16px; color: var(--green); }
 .oc-meta .v { font-family: "Fraunces", serif; font-weight: 600; color: var(--green-deep); font-size: 1.02rem; }
 .mock .float-chip {
-  position: absolute; z-index: 3; left: -16px; bottom: 34px;
+  position: absolute; z-index: 3; left: -22px; top: -20px; bottom: auto;
   background: var(--card); box-shadow: var(--shadow-md); border: 1px solid var(--line);
   border-radius: 14px; padding: 10px 14px; transform: rotate(-3deg);
   display: flex; align-items: center; gap: .6em; font-size: .86rem; font-weight: 600;
