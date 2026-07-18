@@ -221,6 +221,10 @@ section { padding: 88px 0; }
 .shot figcaption { margin-top: 15px; font-size: .95rem; color: var(--ink-soft); font-weight: 500; display: flex; align-items: center; gap: .6em; }
 .shot figcaption .n { width: 22px; height: 22px; border-radius: 50%; background: var(--green-tint); color: var(--green-deep); font-size: .78rem; font-weight: 700; display: grid; place-items: center; flex: none; }
 
+/* demo video */
+.demo-video { max-width: 880px; margin: 0 auto 46px; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--line); background: var(--paper); }
+.demo-video video { display: block; width: 100%; height: auto; }
+
 /* lightbox */
 .lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(20,18,14,.84); backdrop-filter: blur(5px); display: grid; place-items: center; padding: 4vw; cursor: zoom-out; animation: rise .2s var(--ease); }
 .lightbox[hidden] { display: none; }
