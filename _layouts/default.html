@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+{%- include head.html -%}
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="{{ '/' | relative_url }}" class="brand">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/><path d="M8.5 14.5l2.2 2.2 4.3-4.6"/></svg>
+      </span>
+      DateLock
+    </a>
+    <nav class="nav-links">
+      <a class="navlink" href="{{ '/#how' | relative_url }}">How it works</a>
+      <a class="navlink" href="{{ '/#features' | relative_url }}">Features</a>
+      <a class="navlink" href="{{ '/#pricing' | relative_url }}">Pricing</a>
+      <a class="btn btn-primary nav-cta" href="{{ '/#pricing' | relative_url }}">Get DateLock</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  {{ content }}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="{{ '/' | relative_url }}" class="brand">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/><path d="M8.5 14.5l2.2 2.2 4.3-4.6"/></svg>
+          </span>
+          DateLock
+        </a>
+        <p>The delivery date always lands on the order — and checkout never breaks.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="{{ '/#how' | relative_url }}">How it works</a>
+        <a href="{{ '/#features' | relative_url }}">Features</a>
+        <a href="{{ '/#pricing' | relative_url }}">Pricing</a>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="{{ '/privacy-policy/' | relative_url }}">Privacy Policy</a>
+        <a href="{{ '/terms-of-use/' | relative_url }}">Terms of Use</a>
+        <a href="{{ '/data-processing-agreement/' | relative_url }}">Data Processing Agreement</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="mailto:aurogpt10@gmail.com">aurogpt10@gmail.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; {{ site.time | date: '%Y' }} DateLock</span>
+      <span>Made for date-sensitive Shopify stores.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
