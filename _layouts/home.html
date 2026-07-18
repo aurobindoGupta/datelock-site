@@ -1,6 +1,11 @@
 ---
 layout: default
 ---
+{%- if site.app_store_url and site.app_store_url != "" -%}
+{%- assign cta_url = site.app_store_url -%}{%- assign cta_txt = "Add to Shopify" -%}
+{%- else -%}
+{%- assign cta_url = "mailto:aurogpt10@gmail.com?subject=DateLock%20early%20access" -%}{%- assign cta_txt = "Get early access" -%}
+{%- endif -%}
 
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -211,7 +216,7 @@ layout: default
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Enforced on express checkout</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Cutoff, lead time &amp; blackouts</li>
         </ul>
-        <a class="btn btn-ghost" href="mailto:aurogpt10@gmail.com?subject=DateLock%20early%20access">Get early access</a>
+        <a class="btn btn-ghost" href="{{ cta_url }}">{{ cta_txt }}</a>
       </div>
       <div class="plan featured">
         <div class="pname">Growth</div>
@@ -222,7 +227,7 @@ layout: default
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Higher monthly volume</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Shows on email &amp; order-status</li>
         </ul>
-        <a class="btn btn-ghost" href="mailto:aurogpt10@gmail.com?subject=DateLock%20early%20access">Get early access</a>
+        <a class="btn btn-ghost" href="{{ cta_url }}">{{ cta_txt }}</a>
       </div>
       <div class="plan">
         <div class="pname">Pro</div>
@@ -233,7 +238,7 @@ layout: default
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> No monthly cap</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Priority support</li>
         </ul>
-        <a class="btn btn-ghost" href="mailto:aurogpt10@gmail.com?subject=DateLock%20early%20access">Get early access</a>
+        <a class="btn btn-ghost" href="{{ cta_url }}">{{ cta_txt }}</a>
       </div>
     </div>
     <p class="price-foot">All plans include the full checkout enforcement and date-on-order — the core is never paywalled.</p>
@@ -246,7 +251,7 @@ layout: default
     <div class="cta-inner">
       <h2>Lock in every delivery date.</h2>
       <p>Never lose a date — or a sale — again. Be first to know when DateLock lands on the Shopify App Store.</p>
-      <a class="btn btn-primary" href="mailto:aurogpt10@gmail.com?subject=DateLock%20early%20access">Get early access
+      <a class="btn btn-primary" href="{{ cta_url }}">{{ cta_txt }}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>

@@ -4,6 +4,11 @@ url: https://getdatelock.com
 theme: minima
 permalink: pretty
 
+# When the app is live on the Shopify App Store, set this to the listing URL
+# (e.g. https://apps.shopify.com/datelock). Blank = CTAs show "Get early access"
+# (mailto); set = every CTA becomes "Add to Shopify" pointing at the listing.
+app_store_url: ""
+
 # Brand mark in the header doubles as Home; nav lists only the legal pages.
 header_pages:
   - privacy-policy.md
