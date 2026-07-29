@@ -153,8 +153,10 @@ img { max-width: 100%; }
   display: flex; align-items: center; gap: .6em; font-size: .86rem; font-weight: 600;
 }
 .mock .float-chip svg { width: 18px; height: 18px; color: var(--green-brt); }
+/* Decorative only — never intercept clicks (same trap as .cta-inner::after). */
 .mock::after {
   content: ""; position: absolute; inset: -30px -20px -10px; z-index: 1;
+  pointer-events: none;
   background: radial-gradient(closest-side, rgba(22,160,108,.14), transparent 75%);
 }
 
@@ -177,7 +179,8 @@ section { padding: 88px 0; }
 
 /* problem band */
 .band { background: var(--ink); color: #f3efe4; border-radius: var(--radius-lg); padding: 54px; position: relative; overflow: hidden; }
-.band::before { content: ""; position: absolute; inset: 0; background: radial-gradient(600px 300px at 90% 0%, rgba(22,160,108,.22), transparent 60%); }
+/* Decorative only — never intercept clicks (same trap as .cta-inner::after). */
+.band::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(600px 300px at 90% 0%, rgba(22,160,108,.22), transparent 60%); }
 .band .inner { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .band h2 { color: #fff; font-size: clamp(1.8rem,3.2vw,2.5rem); }
 .band .lead-col p { color: rgba(243,239,228,.72); margin-top: 18px; }
@@ -264,8 +267,12 @@ section { padding: 88px 0; }
   border-radius: var(--radius-lg); padding: 66px 40px; color: #fff; position: relative; overflow: hidden;
   box-shadow: var(--shadow-lg);
 }
+/* pointer-events:none is REQUIRED, not cosmetic. This overlay is absolutely
+   positioned across the whole band and is last in tree order, so with z-index:auto
+   it paints ABOVE the CTA anchor even though the anchor is position:relative —
+   swallowing every click on "Add to Shopify". Found live 2026-07-29. */
 .cta-inner::after {
-  content: ""; position: absolute; inset: 0;
+  content: ""; position: absolute; inset: 0; pointer-events: none;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='none' stroke='%23ffffff' stroke-opacity='0.06'/%3E%3C/svg%3E");
 }
 .cta-inner h2 { color: #fff; font-size: clamp(2rem,4vw,3rem); position: relative; }
