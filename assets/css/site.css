@@ -80,6 +80,18 @@ img { max-width: 100%; }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
 .btn-ghost:hover { border-color: var(--ink); color: var(--ink); transform: translateY(-2px); }
 
+/* Keyboard focus. There were 11 :hover rules and zero :focus, so keyboard users had
+   only the UA default ring — which is close to invisible on the dark-green primary
+   button (WCAG 2.4.7). :focus-visible, so it never fires on mouse clicks. The offset
+   ring works on both the cream page and the green/ink panels. */
+:where(a, button, .btn, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--green-brt);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.cta-inner .btn-primary:focus-visible,
+.band a:focus-visible { outline-color: #fff; }
+
 /* ------- date chip (the signature motif) ------- */
 .chip {
   display: inline-flex; align-items: center; gap: .5em;
@@ -106,6 +118,11 @@ img { max-width: 100%; }
   width: 32px; height: 32px; border-radius: 9px; flex: none;
   object-fit: cover; display: block; box-shadow: var(--shadow-sm);
 }
+/* Header mark rides larger than the footer's — it is the page's primary brand moment.
+   Sized per breakpoint below. The 68px header absorbs up to 48px without growing
+   (measured), and icon-192.png is 192px natural, so every size here is still a
+   DOWNSCALE even at 4x DPR — no extra image files needed. Radius tracks the size. */
+.site-header .brand .mark { width: 44px; height: 44px; border-radius: 12px; }
 .nav-links { display: flex; align-items: center; gap: 30px; }
 .nav-links a.navlink { color: var(--ink-soft); font-weight: 500; font-size: .95rem; }
 .nav-links a.navlink:hover { color: var(--ink); }
@@ -120,6 +137,14 @@ img { max-width: 100%; }
 .hero h1 { font-size: clamp(2.5rem, 5.4vw, 4rem); margin: 22px 0 0; font-weight: 600; }
 .hero h1 em { font-style: italic; color: var(--green); }
 .hero .lead { font-size: 1.18rem; color: var(--ink-soft); margin: 22px 0 0; max-width: 34ch; }
+/* Opening brand beat, above the eyebrow. Block-level so it owns its own line and
+   shares the left edge with the eyebrow/h1 on desktop; the <=900px block gives it auto
+   margins so it centres with the copy column there. Radius tracks the header mark's
+   ratio (9/32); shadow steps up to -md because it carries more weight at this size. */
+.hero-mark {
+  width: 96px; height: 96px; border-radius: 27px;
+  display: block; margin: 0 0 26px; box-shadow: var(--shadow-md);
+}
 .hero-cta { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
 .hero-note { margin-top: 22px; font-size: .9rem; color: var(--ink-faint); display: flex; align-items: center; gap: .5em; }
 .hero-note .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green-brt); box-shadow: 0 0 0 4px rgba(22,160,108,.16); }
@@ -299,7 +324,12 @@ section { padding: 88px 0; }
 .legal .wrap { max-width: 760px; }
 .legal .doc-head { margin-bottom: 34px; padding-bottom: 26px; border-bottom: 1px solid var(--line); }
 .legal h1 { font-size: clamp(2rem, 4vw, 2.8rem); }
-.legal-body { font-size: 1.02rem; color: #2c2a23; }
+/* Long unbroken tokens (paths like /data-processing-agreement/, `customers/data_request`,
+   the support address) have no space to break at and would push past the column on a
+   narrow phone. break-word only kicks in when a word genuinely cannot fit, so normal
+   prose wrapping is untouched. */
+.legal-body { font-size: 1.02rem; color: #2c2a23; overflow-wrap: break-word; }
+.legal-body a, .legal-body code { overflow-wrap: break-word; }
 .legal-body h1 { display: none; } /* markdown repeats the title; hide the in-body one */
 .legal-body h2 { font-size: 1.5rem; margin: 40px 0 12px; }
 .legal-body h3 { font-size: 1.18rem; margin: 28px 0 8px; }
@@ -319,19 +349,56 @@ section { padding: 88px 0; }
 .reveal { opacity: 0; animation: rise .7s var(--ease) forwards; }
 .d1 { animation-delay: .05s; } .d2 { animation-delay: .15s; } .d3 { animation-delay: .25s; }
 .d4 { animation-delay: .35s; } .d5 { animation-delay: .45s; }
-@media (prefers-reduced-motion: reduce) { .reveal { animation: none; opacity: 1; } html { scroll-behavior: auto; } }
+/* Covers .reveal + smooth scrolling AND the lightbox open animation and every hover
+   translate — previously only the first two were handled, so opening an image still
+   animated and cards still jumped under a reduced-motion preference. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; opacity: 1; }
+  html { scroll-behavior: auto; }
+  .lightbox { animation: none; }
+  .btn, .feat, .shot img { transition: none; }
+  .btn:hover, .btn-primary:hover, .btn-ghost:hover,
+  .cta-inner .btn-primary:hover, .feat:hover, .shot:hover img { transform: none; }
+}
 
 /* ==========================================================================
    Responsive
    ========================================================================== */
 @media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 44px; }
-  .mock { max-width: 420px; }
+  /* Single column now, but .lead is capped at 34ch — left-aligned that left a wide
+     dead zone on the right. Centre the stack so the hero reads as one composition. */
+  /* text-align on .hero-grid would INHERIT into .mock and centre the order-card rows
+     (product name, "1 item · Standard", "Order #1032"). That card mimics a real admin
+     order, so it stays left-aligned — centre the copy column only. */
+  .hero-grid { grid-template-columns: 1fr; gap: 44px; justify-items: center; }
+  .hero-copy { text-align: center; }
+  .hero .lead { margin-left: auto; margin-right: auto; }
+  .hero-cta { justify-content: center; }
+  .hero-note { justify-content: center; }
+  .mock { max-width: 420px; margin-left: auto; margin-right: auto; }
   .band .inner { grid-template-columns: 1fr; gap: 28px; }
   .feat-grid, .steps, .price-grid { grid-template-columns: 1fr 1fr; }
   .shots { grid-template-columns: 1fr; max-width: 460px; margin-left: auto; margin-right: auto; }
-  .foot-grid { grid-template-columns: 1fr 1fr; }
+  /* Three link groups: keep all three in one row. At 1fr 1fr the third (Contact) was
+     orphaned on its own row. Footers read as left-aligned grids, so widen rather than
+     centre. Measured at 820px: 235px columns, nothing wraps. */
+  .foot-grid { grid-template-columns: 1fr 1fr 1fr; }
   .foot-brand { grid-column: 1 / -1; }
+  .site-header .brand .mark { width: 40px; height: 40px; border-radius: 11px; }
+  /* Longhand margins, not the shorthand — the base rule's margin-bottom must survive. */
+  .hero-mark { width: 80px; height: 80px; border-radius: 22px; margin-left: auto; margin-right: auto; }
+}
+/* 621-900px is the two-column band. Pricing, steps and footer links all come in
+   THREES, so the last one is orphaned alone on its own row. Span it across both
+   columns and centre it at exactly one column's width (the grid gap is halved out
+   of the 50%), so it reads as deliberate instead of left-over. */
+@media (min-width: 621px) and (max-width: 900px) {
+  /* `width`, NOT `max-width`: auto margins cancel a grid item's default `stretch`,
+     so with max-width the card collapsed to fit-content (Pro measured 271px next to
+     371px siblings). An explicit width resolves against the spanned area and the auto
+     margins then centre it. */
+  .price-grid > .plan:last-child { grid-column: 1 / -1; width: calc(50% - 11px); margin-left: auto; margin-right: auto; }
+  .steps > .step:last-child { grid-column: 1 / -1; width: calc(50% - 12px); margin-left: auto; margin-right: auto; }
 }
 @media (max-width: 620px) {
   body { font-size: 16px; }
@@ -341,4 +408,27 @@ section { padding: 88px 0; }
   .feat-grid, .steps, .price-grid, .foot-grid { grid-template-columns: 1fr; }
   .plan.featured { order: -1; }
   .cta-inner { padding: 48px 26px; }
+  /* Stacked, they were sized by their own text (190px vs 133px on an iPhone SE).
+     Full-width matches the .plan .btn idiom and keeps both tap targets equal. */
+  /* The chip hangs at left:-22px off the card, which is fine while the hero column is
+     wide. Once .mock fills the column that offset lands outside the viewport and the
+     badge is silently CLIPPED by .hero{overflow:hidden} — measured -9px at 280px and
+     -3px at 375px. Tuck it in; it still overlaps the card corner. */
+  .mock .float-chip { left: 0; top: -14px; }
+  .hero-cta { flex-direction: column; align-items: stretch; }
+  .hero-cta .btn { width: 100%; justify-content: center; }
+  .site-header .brand .mark { width: 36px; height: 36px; border-radius: 10px; }
+  .hero-mark { width: 64px; height: 64px; border-radius: 18px; margin-bottom: 22px; }
+}
+/* Very narrow phones (Galaxy Fold folded, 280px). The header is a space-between row of
+   brand + CTA, and .btn is white-space:nowrap, so neither can shrink or wrap: measured
+   132px + 142px = 275px of intrinsic width against 240px of usable space, which pushed
+   the page 15px wide and produced real horizontal scroll. Trim the brand and the CTA
+   rather than hiding either — at 280px this measures 105 + 117 = 222px and fits, with
+   "Add to Shopify" still reading in full. */
+@media (max-width: 400px) {
+  .wrap { padding-left: 14px; padding-right: 14px; }
+  .site-header .brand { font-size: 1.05rem; gap: .4em; }
+  .site-header .brand .mark { width: 30px; height: 30px; border-radius: 9px; }
+  .nav-cta { font-size: .86rem; padding: .55em .85em; }
 }

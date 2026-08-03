@@ -11,6 +11,23 @@ layout: default
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
+      {%- comment -%}
+        alt is empty on purpose — the header link directly above already announces
+        "DateLock", so a meaningful alt here would read the brand out twice. Same
+        decorative convention as the header mark.
+      {%- endcomment -%}
+      {%- comment -%}
+        srcset, because one file cannot serve both ends: at 96px CSS on a DPR-2 screen
+        the browser needs 192 physical px, so icon-192 is exactly at its limit and any
+        larger render upscales. Mobile only needs 64px (128 physical) and should not pay
+        248KB for the 512. `sizes` mirrors the CSS breakpoints so the browser picks before
+        layout. alt is empty on purpose — the header link above already announces DateLock.
+      {%- endcomment -%}
+      <img class="hero-mark reveal d1"
+           src="{{ '/assets/icon-192.png' | relative_url }}"
+           srcset="{{ '/assets/icon-192.png' | relative_url }} 192w, {{ '/assets/icon-512.png' | relative_url }} 512w"
+           sizes="(max-width: 620px) 64px, (max-width: 900px) 80px, 96px"
+           alt="" width="96" height="96" decoding="async">
       <span class="eyebrow reveal d1">Now on the Shopify App Store</span>
       <h1 class="reveal d2">The delivery date always <em>lands on the order.</em></h1>
       <p class="lead reveal d3">DateLock lets your customers choose a delivery or pickup date at checkout — saved to every order, enforced on every checkout including express, and built so it never breaks your store.</p>
@@ -135,9 +152,9 @@ layout: default
         <p>The date appears on the Thank-you page, the Order-status page, and — with a paste-in snippet — the order-confirmation email.</p>
       </div>
       <div class="feat">
-        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6"/><path d="M8 9h8M8 13h5"/><path d="M16 17.5l2 2 3.5-4"/></svg></span>
-        <h3>Flat, honest pricing</h3>
-        <p>No percentage of revenue, no surprise upgrades, and no billing after uninstall — billing runs through Shopify.</p>
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8l9 5.2-9 5.2-9-5.2 9-5.2z"/><path d="M3 12l9 5.2 9-5.2"/><path d="M3 16.2l9 5.2 9-5.2"/></svg></span>
+        <h3>Leaves your theme alone</h3>
+        <p>DateLock installs as a theme app embed — no theme code is edited. Switch it off or uninstall and nothing is left behind on your cart or checkout.</p>
       </div>
     </div>
   </div>
@@ -231,8 +248,8 @@ layout: default
         <div class="pcap">Up to 400 delivery-date orders / mo</div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Everything in Free</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Higher monthly volume</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Shows on email &amp; order-status</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> 8&times; the monthly order volume</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> No features locked behind the plan</li>
         </ul>
         <a class="btn btn-ghost" href="{{ cta_url }}">{{ cta_txt }}</a>
       </div>
