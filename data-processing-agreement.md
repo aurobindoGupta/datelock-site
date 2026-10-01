@@ -6,7 +6,7 @@ permalink: /data-processing-agreement/
 
 # Data Processing Agreement
 
-_Last updated: 18 July 2026_
+_Last updated: 1 October 2026_
 
 This Data Processing Agreement ("DPA") is between the merchant operating a Shopify store ("**Merchant**", the **controller**) and **Aurobindo Gupta**, a solo developer operating the DateLock app ("**DateLock**", "we", the **processor**). It supplements our [Privacy Policy]({{ '/privacy-policy/' | relative_url }}) and governs how DateLock processes personal data on the Merchant's behalf. "Controller", "processor", "personal data", "processing", and "personal data breach" have the meanings given in the GDPR (Regulation (EU) 2016/679).
 
@@ -36,7 +36,7 @@ DateLock holds **minimal personal data** and keeps **no separate store of shoppe
 
 **Written onto the order (stored by Shopify, not by us):** the chosen **delivery date**, as an order metafield, an order tag, and an order attribute — so your fulfilment team can see it. A calendar date on its own is not personal data.
 
-**Shared with a sub-processor:** to send a plan-limit notice, we send the **Merchant's own email address** to our email provider (§5). No shopper data is shared.
+**Shared with a sub-processor:** to send a plan-limit notice or an uninstall confirmation, we send the **Merchant's own email address** to our email provider (§5). We do not store that address. No shopper data is shared.
 
 We do **not** store shoppers' names, email addresses, shipping addresses, or payment details. Payments are handled entirely by **Shopify** — we never see card or bank data.
 
@@ -54,7 +54,7 @@ The Merchant gives **general authorization** for us to use the sub-processors be
 |---|---|---|
 | **Shopify** | Platform of record; source of store and order data | Per Shopify's terms |
 | **Render** | App hosting + managed PostgreSQL database | United States |
-| **Resend** | Transactional email (plan-limit notice to the Merchant) | United States |
+| **Resend** | Transactional email (plan-limit notice and uninstall confirmation to the Merchant) | United States |
 
 We will give **30 days'** notice before adding or replacing a sub-processor. The Merchant may **object on reasonable data-protection grounds**; if we can't resolve it, the Merchant may terminate by uninstalling.
 

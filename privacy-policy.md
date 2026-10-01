@@ -6,7 +6,7 @@ permalink: /privacy-policy/
 
 # Privacy Policy
 
-_Last updated: 18 July 2026_
+_Last updated: 1 October 2026_
 
 This Privacy Policy explains what data the **DateLock** app ("DateLock", "we", "us") collects when a merchant installs it on their Shopify store, how we use it, and the choices available. DateLock is a delivery-date app for Shopify stores. Merchants: see also our [Data Processing Agreement]({{ '/data-processing-agreement/' | relative_url }}).
 
@@ -36,7 +36,7 @@ DateLock is hosted on **Render** (United States), including a managed PostgreSQL
 
 - **Shopify** — the platform the app runs on; source of store and order data.
 - **Render** — application hosting and database.
-- **Resend** — transactional email (e.g., a notice if your store approaches its plan limit).
+- **Resend** — transactional email (a notice if your store reaches its plan limit, and a confirmation when you uninstall). For the uninstall confirmation we read the store owner's email address from Shopify's uninstall notice, use it once, and do not store it.
 
 ## Cookies
 
@@ -51,6 +51,8 @@ DateLock implements Shopify's mandatory privacy webhooks:
 - **`shop/redact`** — after a store uninstalls DateLock, Shopify sends this webhook and we delete the store's data.
 
 When you **uninstall** DateLock, we stop collecting new data and delete your store's data on the `shop/redact` signal.
+
+Uninstalling stops future billing cycles. It does not refund or credit any part of a billing cycle that has already been charged or generated, including when you uninstall partway through a cycle — see our [Terms of Use]({{ '/terms-of-use/' | relative_url }}).
 
 ## Your privacy rights
 
