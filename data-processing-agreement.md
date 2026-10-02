@@ -6,7 +6,7 @@ permalink: /data-processing-agreement/
 
 # Data Processing Agreement
 
-_Last updated: 1 October 2026_
+_Last updated: 2 October 2026_
 
 This Data Processing Agreement ("DPA") is between the merchant operating a Shopify store ("**Merchant**", the **controller**) and **Aurobindo Gupta**, a solo developer operating the DateLock app ("**DateLock**", "we", the **processor**). It supplements our [Privacy Policy]({{ '/privacy-policy/' | relative_url }}) and governs how DateLock processes personal data on the Merchant's behalf. "Controller", "processor", "personal data", "processing", and "personal data breach" have the meanings given in the GDPR (Regulation (EU) 2016/679).
 
@@ -76,7 +76,7 @@ Taking into account the nature of processing and the information available to us
 - We implement Shopify's three mandatory compliance webhooks (one HMAC-verified endpoint):
   - **`customers/data_request`** — we hold no separate shopper data to compile.
   - **`customers/redact`** — nothing on our side to erase for an individual shopper.
-  - **`shop/redact`** (about 48h after uninstall) — we **delete every record tied to that store**; repeat deliveries are harmless.
+  - **`shop/redact`** (about 48h after uninstall) — we **delete every record tied to that store**; repeat deliveries are harmless. If the store has installed DateLock again by then, we ask Shopify whether the app is installed and keep the records only if Shopify confirms it; if we cannot confirm it, the records are deleted.
 - On uninstall we stop collecting new data and delete the store's data on the `shop/redact` signal.
 
 ## 10. Audit & compliance

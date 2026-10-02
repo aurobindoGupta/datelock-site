@@ -6,7 +6,7 @@ permalink: /privacy-policy/
 
 # Privacy Policy
 
-_Last updated: 1 October 2026_
+_Last updated: 2 October 2026_
 
 This Privacy Policy explains what data the **DateLock** app ("DateLock", "we", "us") collects when a merchant installs it on their Shopify store, how we use it, and the choices available. DateLock is a delivery-date app for Shopify stores. Merchants: see also our [Data Processing Agreement]({{ '/data-processing-agreement/' | relative_url }}).
 
@@ -48,7 +48,7 @@ DateLock implements Shopify's mandatory privacy webhooks:
 
 - **`customers/data_request`** — if a shopper requests their data via a merchant, we respond with any data we hold (DateLock does not store shopper personal data).
 - **`customers/redact`** — we delete any data associated with the identified customer.
-- **`shop/redact`** — after a store uninstalls DateLock, Shopify sends this webhook and we delete the store's data.
+- **`shop/redact`** — about 48 hours after a store uninstalls DateLock, Shopify sends this webhook and we delete the store's data. If the store has installed DateLock again by then, we ask Shopify whether the app is installed and keep the data only if Shopify confirms it; if we cannot confirm it, the data is deleted. See "Uninstalling and your data" in our [Terms of Use]({{ '/terms-of-use/' | relative_url }}).
 
 When you **uninstall** DateLock, we stop collecting new data and delete your store's data on the `shop/redact` signal.
 

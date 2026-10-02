@@ -6,7 +6,7 @@ permalink: /terms-of-use/
 
 # Terms of Use
 
-_Last updated: 1 October 2026_
+_Last updated: 2 October 2026_
 
 These Terms govern your use of the **DateLock** Shopify app. By installing or using DateLock, you agree to these Terms.
 
@@ -43,6 +43,19 @@ To the maximum extent permitted by law, DateLock is not liable for any indirect,
 ## Termination
 
 You may stop using DateLock at any time by uninstalling it from your Shopify admin; uninstalling ends your plan and stops future billing; charges already made are not refunded (see Billing). We may suspend or end access if these Terms are breached or as required by law or by Shopify, and we may modify or discontinue features of the app over time.
+
+## Uninstalling and your data
+
+When you uninstall DateLock:
+
+- We delete our access to your store as soon as Shopify tells us about the uninstall, and Shopify removes the DateLock date picker from your theme.
+- About **48 hours** later, Shopify sends us an erase request. When it arrives, we delete the remaining records we hold for your store: your monthly usage records and your plan and setup state. Deleted records cannot be restored.
+- Delivery dates already saved on your orders stay on those orders in Shopify.
+
+If you install DateLock again:
+
+- **After the erase request has been handled**, your store starts as a new install.
+- **Before the erase request arrives**: when it does arrive, we ask Shopify whether DateLock is installed on your store at that moment. If Shopify confirms it, we keep your records. If we cannot confirm it — for example, because Shopify does not answer — the records are deleted as described above, even though you have installed DateLock again. Your store is then treated as a new install: new orders are not given the Delivery date field or tag until you open DateLock again, and when you open it, enforcement is off until you turn it on again. Your monthly usage count starts again from zero.
 
 ## Governing law
 
