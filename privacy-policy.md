@@ -6,7 +6,7 @@ permalink: /privacy-policy/
 
 # Privacy Policy
 
-_Last updated: 2 October 2026_
+_Last updated: 4 October 2026_
 
 This Privacy Policy explains what data the **DateLock** app ("DateLock", "we", "us") collects when a merchant installs it on their Shopify store, how we use it, and the choices available. DateLock is a delivery-date app for Shopify stores. Merchants: see also our [Data Processing Agreement]({{ '/data-processing-agreement/' | relative_url }}).
 
@@ -19,6 +19,7 @@ DateLock is installed by **merchants** on their Shopify stores. We interact with
 - **Store identity & access.** When you install DateLock, Shopify provides your store's `.myshopify.com` domain and an access token. We store these so the app can authenticate to Shopify and function.
 - **Order delivery dates.** When an order is placed, Shopify sends DateLock an `orders/create` webhook. We read the customer-selected **delivery date** from the order's attributes and write it back onto the order (as an order metafield and tag) so it is visible to your fulfillment team. The delivery date is a calendar date — not personal information.
 - **Usage metering.** To enforce plan limits, we store a per-order record (your store domain, the order ID, and the calendar month) so we can count delivery-date orders per month. The order ID is used only to avoid double-counting.
+- **Orders without a delivery date.** While enforcement is on, if an order arrives without a delivery date (for example a staff draft order or a marketplace order), we keep a short record: your store domain, the order ID and number, where the order came from, when it was placed, the marketplace's own requested ship date if it has one, and whether our `DateLock: missing-date` tag was applied. No customer details. We use it only to answer your support questions, and delete it with the rest of your store's data.
 - **Billing state.** We store your plan tier and related billing status. Payments are handled by **Shopify** — DateLock never sees or stores card or bank details.
 - **Operational logs.** Our hosting provider generates automated technical logs (e.g. error and request logs) that can include a store domain and timestamps. We use these only to operate, secure, and debug the service, and retain them for a short period.
 

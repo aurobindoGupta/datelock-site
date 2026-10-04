@@ -6,7 +6,7 @@ permalink: /data-processing-agreement/
 
 # Data Processing Agreement
 
-_Last updated: 2 October 2026_
+_Last updated: 4 October 2026_
 
 This Data Processing Agreement ("DPA") is between the merchant operating a Shopify store ("**Merchant**", the **controller**) and **Aurobindo Gupta**, a solo developer operating the DateLock app ("**DateLock**", "we", the **processor**). It supplements our [Privacy Policy]({{ '/privacy-policy/' | relative_url }}) and governs how DateLock processes personal data on the Merchant's behalf. "Controller", "processor", "personal data", "processing", and "personal data breach" have the meanings given in the GDPR (Regulation (EU) 2016/679).
 
@@ -32,6 +32,7 @@ DateLock holds **minimal personal data** and keeps **no separate store of shoppe
 |---|---|---|
 | **Store credentials** | The store's `.myshopify.com` domain and a Shopify **offline** access token | The token is a credential. We use offline tokens only, so **we store no staff names or emails**. |
 | **Usage records** | Store domain, Shopify order ID, and calendar month, to count delivery-date orders | The order ID is a store identifier, used only to avoid double-counting. |
+| **Orders without a delivery date** | Store domain, order ID and number, order source, order time, the marketplace's requested ship date (if any), and whether the missing-date tag was applied — recorded only while enforcement is on | Store identifiers only; no shopper data. Used only for support. |
 | **Billing state** | Store domain, plan/tier, and limit/status timestamps | No shopper data. |
 
 **Written onto the order (stored by Shopify, not by us):** the chosen **delivery date**, as an order metafield, an order tag, and an order attribute — so your fulfilment team can see it. A calendar date on its own is not personal data.
