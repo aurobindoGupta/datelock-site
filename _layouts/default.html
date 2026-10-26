@@ -1,64 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 {%- include head.html -%}
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
   <div class="wrap nav">
     <a href="{{ '/' | relative_url }}" class="brand">
-      <img class="mark" src="{{ '/assets/icon-192.png' | relative_url }}" alt="" width="30" height="30">
+      <img class="mark" src="{{ '/assets/icon-192.png' | relative_url }}" alt="" width="32" height="32">
       DateLock
     </a>
-    <nav class="nav-links">
+    <nav class="nav-links" aria-label="Main">
       <a class="navlink" href="{{ '/#how' | relative_url }}">How it works</a>
-      <a class="navlink" href="{{ '/#features' | relative_url }}">Features</a>
       <a class="navlink" href="{{ '/#pricing' | relative_url }}">Pricing</a>
       {% if site.app_store_url and site.app_store_url != "" %}
-      <a class="btn btn-primary nav-cta" href="{{ site.app_store_url }}">Add to Shopify</a>
+      <a class="btn btn-primary btn-sm" href="{{ site.app_store_url }}">Add to Shopify</a>
       {% else %}
-      <a class="btn btn-primary nav-cta" href="{{ '/#pricing' | relative_url }}">Get DateLock</a>
+      <a class="btn btn-primary btn-sm" href="{{ '/#pricing' | relative_url }}">Get DateLock</a>
       {% endif %}
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main">
   {{ content }}
 </main>
 
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <a href="{{ '/' | relative_url }}" class="brand">
-          <img class="mark" src="{{ '/assets/icon-192.png' | relative_url }}" alt="" width="30" height="30">
-
-          DateLock
-        </a>
-        <p>The delivery date always lands on the order — and checkout never breaks.</p>
-      </div>
-      <div class="foot-col">
-        <h4>Product</h4>
-        <a href="{{ '/#how' | relative_url }}">How it works</a>
-        <a href="{{ '/#features' | relative_url }}">Features</a>
-        <a href="{{ '/#pricing' | relative_url }}">Pricing</a>
-      </div>
-      <div class="foot-col">
-        <h4>Legal</h4>
-        <a href="{{ '/privacy-policy/' | relative_url }}">Privacy Policy</a>
-        <a href="{{ '/terms-of-use/' | relative_url }}">Terms of Use</a>
-        <a href="{{ '/data-processing-agreement/' | relative_url }}">Data Processing Agreement</a>
-      </div>
-      <div class="foot-col">
-        <h4>Contact</h4>
-        <a href="mailto:aurogpt10@gmail.com">aurogpt10@gmail.com</a>
-      </div>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a href="{{ '/' | relative_url }}" class="brand">
+        <img class="mark" src="{{ '/assets/icon-192.png' | relative_url }}" alt="" width="32" height="32">
+        DateLock
+      </a>
+      <p>Delivery dates for Shopify stores that sell by the day.</p>
     </div>
-    <div class="foot-bottom">
-      <span>&copy; {{ site.time | date: '%Y' }} DateLock</span>
-      <span>Made for date-sensitive Shopify stores.</span>
+    <nav class="foot-col" aria-label="Product">
+      <h2>Product</h2>
+      <a href="{{ '/#how' | relative_url }}">How it works</a>
+      <a href="{{ '/#rules' | relative_url }}">Delivery rules</a>
+      <a href="{{ '/#pricing' | relative_url }}">Pricing</a>
+      {% if site.app_store_url and site.app_store_url != "" %}<a href="{{ site.app_store_url }}">Shopify App Store</a>{% endif %}
+    </nav>
+    <nav class="foot-col" aria-label="Legal">
+      <h2>Legal</h2>
+      <a href="{{ '/privacy-policy/' | relative_url }}">Privacy Policy</a>
+      <a href="{{ '/terms-of-use/' | relative_url }}">Terms of Use</a>
+      <a href="{{ '/data-processing-agreement/' | relative_url }}">Data Processing Agreement</a>
+    </nav>
+    <div class="foot-col">
+      <h2>Contact</h2>
+      <a href="mailto:aurogpt10@gmail.com">aurogpt10@gmail.com</a>
     </div>
   </div>
+  <div class="wrap"><div class="foot-bottom">&copy; {{ site.time | date: '%Y' }} DateLock</div></div>
 </footer>
 
 <div id="lightbox" class="lightbox" hidden>
@@ -70,10 +65,23 @@
     var lb = document.getElementById('lightbox');
     if (!lb) return;
     var lbImg = lb.querySelector('img');
-    function open(src, alt) { lbImg.src = src; lbImg.alt = alt || ''; lb.hidden = false; document.body.style.overflow = 'hidden'; }
-    function close() { lb.hidden = true; lbImg.src = ''; document.body.style.overflow = ''; }
+    var lbClose = lb.querySelector('.lb-close');
+    var opener = null;
+    function open(src, alt) {
+      opener = document.activeElement;
+      lbImg.src = src; lbImg.alt = alt || ''; lb.hidden = false; document.body.style.overflow = 'hidden';
+      lbClose.focus();
+    }
+    function close() {
+      lb.hidden = true; lbImg.src = ''; document.body.style.overflow = '';
+      if (opener && opener.focus) opener.focus();
+    }
+    lb.addEventListener('keydown', function (e) { if (e.key === 'Tab') { e.preventDefault(); lbClose.focus(); } });
     document.querySelectorAll('.shot img').forEach(function (img) {
       img.addEventListener('click', function () { open(img.currentSrc || img.src, img.alt); });
+      img.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(img.currentSrc || img.src, img.alt); }
+      });
     });
     lb.addEventListener('click', close);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) close(); });

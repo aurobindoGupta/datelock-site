@@ -7,277 +7,214 @@ layout: default
 {%- assign cta_url = "mailto:aurogpt10@gmail.com?subject=DateLock%20early%20access" -%}{%- assign cta_txt = "Get early access" -%}
 {%- endif -%}
 
-<!-- ============ HERO ============ -->
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      {%- comment -%}
-        alt is empty on purpose — the header link directly above already announces
-        "DateLock", so a meaningful alt here would read the brand out twice. Same
-        decorative convention as the header mark.
-      {%- endcomment -%}
-      {%- comment -%}
-        srcset, because one file cannot serve both ends: at 96px CSS on a DPR-2 screen
-        the browser needs 192 physical px, so icon-192 is exactly at its limit and any
-        larger render upscales. Mobile only needs 64px (128 physical) and should not pay
-        248KB for the 512. `sizes` mirrors the CSS breakpoints so the browser picks before
-        layout. alt is empty on purpose — the header link above already announces DateLock.
-      {%- endcomment -%}
-      <img class="hero-mark reveal d1"
-           src="{{ '/assets/icon-192.png' | relative_url }}"
-           srcset="{{ '/assets/icon-192.png' | relative_url }} 192w, {{ '/assets/icon-512.png' | relative_url }} 512w"
-           sizes="(max-width: 620px) 64px, (max-width: 900px) 80px, 96px"
-           alt="" width="96" height="96" decoding="async">
-      <span class="eyebrow reveal d1">Now on the Shopify App Store</span>
-      <h1 class="reveal d2">The delivery date always <em>lands on the order.</em></h1>
-      <p class="lead reveal d3">DateLock lets your customers choose a delivery or pickup date at checkout — saved to every order, enforced on every checkout including express, and built so it never breaks your store.</p>
-      <div class="hero-cta reveal d4">
-        <a class="btn btn-primary" href="#how">See how it works
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a class="btn btn-ghost" href="#pricing">View pricing</a>
+      <h1>Every order arrives with its delivery date.</h1>
+      <p class="lead">Customers pick a delivery date on your store before checkout. Checkout won’t finish without one, and the date is saved on the Shopify order your team packs from.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="{{ cta_url }}">{{ cta_txt }}</a>
+        <a class="btn btn-quiet" href="#pricing">See pricing</a>
       </div>
-      <div class="hero-note reveal d5"><span class="dot"></span> Fails open by design — your checkout is never blocked.</div>
+      <p class="hero-note">Free for 50 dated orders a month. Made for bakeries, florists, meal kits and anyone who delivers on a set day.</p>
     </div>
 
-    <div class="mock reveal d3">
-      <div class="order-card">
-        <div class="oc-top">
-          <span class="oc-id">Order #1032</span>
-          <span class="badge-paid">Paid</span>
+    <div class="demo">
+      <div class="picker" id="picker" hidden>
+        <p class="picker-title" id="picker-title">Choose your delivery date</p>
+        <p class="picker-sub">Try it. This demo store needs a day’s notice, has a 2 pm cutoff and is closed on two days.</p>
+        <div class="cal-head">
+          <button type="button" class="cal-nav" id="cal-prev" aria-label="Previous month">‹</button>
+          <span class="cal-month" id="cal-month" aria-live="polite"></span>
+          <button type="button" class="cal-nav" id="cal-next" aria-label="Next month">›</button>
         </div>
-        <div class="oc-meta">
-          <span class="k">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/><path d="M8.5 14.5l2.2 2.2 4.3-4.6"/></svg>
-            Delivery date
-          </span>
-          <span class="v">Jul 31, 2026</span>
+        <div class="cal-grid" id="cal-grid" role="group" aria-labelledby="picker-title"></div>
+        <div class="legend" aria-hidden="true">
+          <span><i class="sw">12</i>Too soon</span>
+          <span><i class="sw sw-closed">12</i>Closed</span>
         </div>
-        <div class="oc-line">
-          <span class="oc-thumb"></span>
-          <span>
-            <div class="t">The Collection Snowboard</div>
-            <div class="s">1 item · Standard</div>
-          </span>
-          <span class="price">$749.95</span>
-        </div>
+        <button type="button" class="btn btn-primary btn-block" id="cal-go" disabled>Continue to checkout</button>
+        <p class="picker-hint" id="cal-hint" aria-live="polite">Pick a date to continue.</p>
       </div>
-      <div class="float-chip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-        On the order, every time
-      </div>
+
+      <article class="slip" id="slip">
+        <header class="slip-head">
+          <span class="slip-id">Order #1024</span>
+          <span class="slip-state" id="slip-state">Paid</span>
+        </header>
+        <ul class="slip-items">
+          <li><span>Celebration cake, 8 inch</span><span>$64.00</span></li>
+          <li><span>Number candles</span><span>$4.00</span></li>
+        </ul>
+        <dl class="slip-fields">
+          <div><dt>Delivery date</dt><dd id="f-meta">Oct 31, 2026</dd></div>
+          <div><dt>Tag</dt><dd id="f-tag">Delivery: 2026-10-31</dd></div>
+          <div><dt>delivery_date</dt><dd id="f-attr">2026-10-31</dd></div>
+        </dl>
+        <div class="stamp" id="stamp" aria-hidden="true">
+          <span class="stamp-day" id="stamp-day">31</span>
+          <span class="stamp-month" id="stamp-month">OCT 2026</span>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ============ TRUST STRIP ============ -->
-<div class="trust-strip">
-  <div class="wrap">
-    <span class="label">Built primarily for date-sensitive stores</span>
-    <div class="verticals">
-      <span>Bakeries</span><span>Florists</span><span>Meal kits</span><span>Fresh food</span><span>Local delivery</span>
-    </div>
-  </div>
-</div>
-
-<!-- ============ PROBLEM BAND ============ -->
-<section>
-  <div class="wrap">
-    <div class="band">
-      <div class="inner">
-        <div class="lead-col">
-          <span class="eyebrow" style="color:var(--green-brt)">The problem</span>
-          <h2>Date-sensitive orders fail two ways. DateLock fixes both.</h2>
-          <p>Every incumbent loses merchants the same way — the date slips through, or the picker breaks the store. DateLock is engineered so neither can happen.</p>
+<section class="section" id="order">
+  <div class="wrap split">
+    <div class="prose">
+      <h2>The date sits on the order, three ways.</h2>
+      <p>Your team works from the Shopify order, so that is where the date goes. Nobody has to open a note or check a second app.</p>
+      <dl class="places">
+        <div>
+          <dt>Additional details</dt>
+          <dd><code>delivery_date 2026-10-31</code><span>Exactly what the customer chose.</span></dd>
         </div>
-        <div class="fail-list">
-          <div class="fail-item">
-            <span class="x">✕</span>
-            <span>
-              <div class="t">The date gets lost before fulfillment sees it.</div>
-              <div class="s">→ <span class="fix">DateLock writes it to every order</span> — metafield, tag, and attribute your team can filter on.</div>
-            </span>
-          </div>
-          <div class="fail-item">
-            <span class="x">✕</span>
-            <span>
-              <div class="t">A picker that goes down blocks checkout.</div>
-              <div class="s">→ <span class="fix">DateLock fails open</span> — if it can't run, checkout still completes. You never lose a sale to us.</div>
-            </span>
-          </div>
-          <div class="fail-item">
-            <span class="x">✕</span>
-            <span>
-              <div class="t">Express checkout skips the date entirely.</div>
-              <div class="s">→ <span class="fix">Enforced server-side</span> — covers Shop Pay, PayPal, Apple &amp; Google Pay, Buy-it-now.</div>
-            </span>
-          </div>
+        <div>
+          <dt>Metafield</dt>
+          <dd><code>Delivery date Oct 31, 2026</code><span>Stored as a real date that other apps can read.</span></dd>
         </div>
-      </div>
+        <div>
+          <dt>Tag</dt>
+          <dd><code>Delivery: 2026-10-31</code><span>Filter your orders list by day.</span></dd>
+        </div>
+      </dl>
+      <p class="aside">While enforcement is on, an order that arrives without a date is tagged <code>DateLock: missing-date</code>, so you can follow up.</p>
     </div>
+    <figure class="shot">
+      <img src="{{ '/assets/shot-admin.png' | relative_url }}" alt="A Shopify order with delivery_date 2026-07-23 under Additional details and Delivery date Jul 23, 2026 under Metafields" width="1600" height="900" loading="lazy" tabindex="0">
+      <figcaption>An order in Shopify admin, on our test store.</figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- ============ FEATURES ============ -->
-<section id="features">
+<section class="section section-tint" id="how">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">What you get</span>
-      <h2>Everything to collect a date — and nothing that risks your checkout.</h2>
-    </div>
-    <div class="feat-grid">
-      <div class="feat">
-        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/><path d="M8.5 14.5l2.2 2.2 4.3-4.6"/></svg></span>
-        <h3>On every order</h3>
-        <p>The chosen date is written to the order as a metafield, tag, and attribute — visible and filterable for fulfillment. It never gets dropped.</p>
-      </div>
-      <div class="feat">
-        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg></span>
-        <h3>Every checkout, incl. express</h3>
-        <p>A server-side validation requires a date before checkout completes — covering Shop Pay, PayPal, Apple Pay, Google Pay and Buy-it-now.</p>
-      </div>
-      <div class="feat">
-        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l7.5 3v5.5c0 5-3.4 8-7.5 10-4.1-2-7.5-5-7.5-10V5.5z"/><path d="M9 12l2 2 4-4.5"/></svg></span>
-        <h3>Never breaks checkout</h3>
-        <p>DateLock fails open by design. If it ever can’t run, checkout still completes and only date collection pauses — never a lost sale.</p>
-      </div>
-      <div class="feat">
-        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2.3"/><circle cx="8" cy="17" r="2.3"/></svg></span>
-        <h3>Your delivery rules</h3>
-        <p>Set cutoff times, lead and preparation time, and blackout dates. Customers can only pick dates you can actually fulfill.</p>
-      </div>
-      <div class="feat">
-        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
-        <h3>Shows everywhere</h3>
-        <p>The date appears on the Thank-you page, the Order-status page, and — with a paste-in snippet — the order-confirmation email.</p>
-      </div>
-      <div class="feat">
-        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8l9 5.2-9 5.2-9-5.2 9-5.2z"/><path d="M3 12l9 5.2 9-5.2"/><path d="M3 16.2l9 5.2 9-5.2"/></svg></span>
-        <h3>Leaves your theme alone</h3>
-        <p>DateLock installs as a theme app embed — no theme code is edited. Switch it off or uninstall and nothing is left behind on your cart or checkout.</p>
-      </div>
-    </div>
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li class="step">
+        <figure class="shot">
+          <img src="{{ '/assets/shot-picker.png' | relative_url }}" alt="A product page with the DateLock calendar open, asking the customer to choose a delivery date" width="1600" height="900" loading="lazy" tabindex="0">
+        </figure>
+        <h3>Your customer picks a date</h3>
+        <p>When they head to checkout or tap Buy it now, a calendar opens on your store. Days you can’t deliver are greyed out.</p>
+      </li>
+      <li class="step">
+        <figure class="shot">
+          <img src="{{ '/assets/shot-checkout.png' | relative_url }}" alt="Shopify checkout showing the message: Please choose a delivery date before checking out" width="1600" height="900" loading="lazy" tabindex="0">
+        </figure>
+        <h3>Checkout won’t finish without it</h3>
+        <p>Once you turn on enforcement in the app, a Shopify checkout rule stops any checkout that has no valid date and shows your message. Shopify runs the rule on express checkouts like Shop Pay and PayPal too.</p>
+      </li>
+      <li class="step">
+        <figure class="shot">
+          <img src="{{ '/assets/shot-thankyou.png' | relative_url }}" alt="Shopify thank-you page showing Delivery date July 18, 2026 in the order summary" width="1600" height="900" loading="lazy" tabindex="0">
+        </figure>
+        <h3>The date lands on the order</h3>
+        <p>DateLock saves it to the order as it comes in. Customers see it on the thank-you and order status pages once you add our blocks (Shopify Basic and up), and in the confirmation email with a snippet you paste in once.</p>
+      </li>
+    </ol>
+    <p class="aside">Screens from our Shopify test store.</p>
   </div>
 </section>
 
-<!-- ============ HOW IT WORKS ============ -->
-<section id="how">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">How it works</span>
-      <h2>From checkout to fulfillment, the date carries through.</h2>
+<section class="section" id="tour">
+  <div class="wrap tour">
+    <div class="prose">
+      <h2>The 30-second tour</h2>
+      <p>From the calendar on the storefront to the date on the order.</p>
     </div>
-    <div class="steps">
-      <div class="step">
-        <div class="num"></div>
-        <h3>Customer picks a date</h3>
-        <p>A clean date picker appears at checkout, greying out days your rules don’t allow — cutoffs, lead time, blackout dates.</p>
-        <div class="rule"></div>
-      </div>
-      <div class="step">
-        <div class="num"></div>
-        <h3>DateLock enforces &amp; saves it</h3>
-        <p>The date is required before checkout can complete, then written straight onto the order — server-side, on every path.</p>
-        <div class="rule"></div>
-      </div>
-      <div class="step">
-        <div class="num"></div>
-        <h3>You fulfill with confidence</h3>
-        <p>The date is on the order detail, filterable by tag, and shown on the thank-you, order-status, and confirmation email.</p>
-        <div class="rule"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SEE IT IN ACTION ============ -->
-<section id="tour">
-  <div class="wrap">
-    <div class="section-head center">
-      <span class="eyebrow">See it in action</span>
-      <h2>The date, from checkout to fulfillment.</h2>
-      <p>Watch the 30-second tour — or scan the key screens below. All from a live store.</p>
-    </div>
-    <div class="demo-video">
-      <video controls playsinline preload="metadata" poster="{{ '/assets/demo-poster.jpg' | relative_url }}">
+    <div class="video">
+      <video controls playsinline preload="none" poster="{{ '/assets/demo-poster.jpg' | relative_url }}" width="1114" height="608">
         <source src="{{ '/assets/demo.mp4' | relative_url }}" type="video/mp4">
-        <img src="{{ '/assets/demo-poster.jpg' | relative_url }}" alt="DateLock — how it works">
       </video>
     </div>
-    <p class="shots-lead">Real screens from a live store — the picker at checkout, the date on the thank-you page, and the date on the order in your admin.</p>
-    <div class="shots">
-      <figure class="shot">
-        <img src="{{ '/assets/shot-picker.png' | relative_url }}" alt="Delivery-date picker at checkout" loading="lazy">
-        <figcaption><span class="n">1</span> Customer picks a date at checkout</figcaption>
-      </figure>
-      <figure class="shot">
-        <img src="{{ '/assets/shot-thankyou.png' | relative_url }}" alt="Delivery date shown on the thank-you page" loading="lazy">
-        <figcaption><span class="n">2</span> It shows on the thank-you page</figcaption>
-      </figure>
-      <figure class="shot">
-        <img src="{{ '/assets/shot-admin.png' | relative_url }}" alt="Delivery date on the order in Shopify admin" loading="lazy">
-        <figcaption><span class="n">3</span> And lands on the order in admin</figcaption>
-      </figure>
+  </div>
+</section>
+
+<section class="section" id="rules">
+  <div class="wrap split split-rules">
+    <div class="prose">
+      <h2>Only the days you can deliver.</h2>
+      <p>Set your rules once in the app. The calendar follows them, so customers never pick a day you can’t make.</p>
+    </div>
+    <dl class="rules">
+      <div><dt>Cutoff time</dt><dd>After your daily cutoff, the earliest delivery day moves back by one.</dd></div>
+      <div><dt>Lead time</dt><dd>Need two days to bake or arrange? Nothing sooner can be picked.</dd></div>
+      <div><dt>Blackout dates</dt><dd>Closed for a holiday or booked solid? Block the day.</dd></div>
+      <div><dt>Presets</dt><dd>Start from the Bakery, Florist or Meal-kit settings and adjust.</dd></div>
+      <div><dt>Phone orders</dt><dd>Staff can add the delivery date to a draft order in Shopify admin.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="section section-dark" id="safe">
+  <div class="wrap">
+    <h2>If DateLock fails, checkout doesn’t.</h2>
+    <div class="safe-grid">
+      <div>
+        <h3>Built to fail open</h3>
+        <p>If our checkout rule can’t run, the checkout goes through. You might miss a date, never a sale, and the missing-date tag tells you which order to chase. This relies on Shopify’s “Block checkout if app experiences a problem” setting staying off, which is the default.</p>
+      </div>
+      <div>
+        <h3>Your theme stays yours</h3>
+        <p>DateLock is a theme app embed you switch on in the theme editor. It doesn’t edit your theme code.</p>
+      </div>
+      <div>
+        <h3>Easy to leave</h3>
+        <p>Uninstall and billing stops. Shopify removes our embed from your theme as well.</p>
+      </div>
+    </div>
+    <p class="limits"><span><strong>What it doesn’t cover:</strong> Shopify doesn’t run checkout rules on Point of Sale sales, subscription renewals or orders created by other apps, so DateLock can’t require a date on those.</span></p>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="wrap">
+    <div class="price-head">
+      <h2>Two plans. Same features.</h2>
+      <p>The only difference is how many dated orders you get each month. Billed through Shopify.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <div class="plan-top">
+          <h3 class="plan-name">Free</h3>
+        </div>
+        <p class="plan-price"><span class="amount">$0</span> no charge</p>
+        <p class="plan-cap">50 dated orders a month</p>
+        <p class="plan-desc">Every feature included. The count starts again on the 1st of each month.</p>
+        <a class="btn btn-outline" href="{{ cta_url }}">{{ cta_txt }}</a>
+      </div>
+      <div class="plan plan-pro" id="plan-pro">
+        <div class="plan-top">
+          <h3 class="plan-name">Pro</h3>
+          <div class="billing" role="group" aria-label="Billing period" hidden>
+            <button type="button" class="bill-opt" data-bill="month" aria-pressed="true">Monthly</button>
+            <button type="button" class="bill-opt" data-bill="year" aria-pressed="false">Yearly</button>
+          </div>
+        </div>
+        <p class="plan-price" data-show="month"><span class="amount">$14.99</span> a month</p>
+        <p class="plan-price" data-show="year"><span class="amount">$149</span> a year, about 17% less than monthly</p>
+        <p class="plan-cap">Unlimited dated orders</p>
+        <p class="plan-desc">Every feature included, with no monthly limit.</p>
+        <a class="btn btn-primary" href="{{ cta_url }}">{{ cta_txt }}</a>
+      </div>
+    </div>
+    <ul class="price-notes">
+      <li>Only orders with a delivery date count toward the limit, including ones from draft orders.</li>
+      <li>Go over 50 on Free and we email you. 24 hours later, date collection pauses until the next month or until you upgrade. Checkout keeps working the whole time.</li>
+      <li>Uninstall and billing stops.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section closing">
+  <div class="wrap">
+    <div class="closing-row">
+      <h2>Give every order its date.</h2>
+      <a class="btn btn-primary" href="{{ cta_url }}">{{ cta_txt }}</a>
     </div>
   </div>
 </section>
 
-<!-- ============ PRICING ============ -->
-<section id="pricing">
-  <div class="wrap">
-    <div class="section-head center">
-      <span class="eyebrow">Pricing</span>
-      <h2>Flat and transparent. Core enforcement on every plan.</h2>
-      <p>Priced per delivery-date order each month. No trial gimmicks — the free tier is permanent. Uninstalling stops future billing.</p>
-    </div>
-    <div class="price-grid">
-      <div class="plan">
-        <div class="pname">Free</div>
-        <div class="pprice">$0</div>
-        <div class="pcap">Up to 50 delivery-date orders / mo</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Date on every order</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Enforced on express checkout</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Cutoff, lead time &amp; blackouts</li>
-        </ul>
-        <a class="btn btn-ghost" href="{{ cta_url }}">{{ cta_txt }}</a>
-      </div>
-      <div class="plan featured">
-        <div class="pname">Growth</div>
-        <div class="pprice">$14.99<span> / mo</span></div>
-        <div class="pcap">Up to 400 delivery-date orders / mo</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Everything in Free</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> 8&times; the monthly order volume</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> No features locked behind the plan</li>
-        </ul>
-        <a class="btn btn-ghost" href="{{ cta_url }}">{{ cta_txt }}</a>
-      </div>
-      <div class="plan">
-        <div class="pname">Pro</div>
-        <div class="pprice">$29.99<span> / mo</span></div>
-        <div class="pcap">Unlimited delivery-date orders</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Everything in Growth</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> No monthly cap</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Priority support</li>
-        </ul>
-        <a class="btn btn-ghost" href="{{ cta_url }}">{{ cta_txt }}</a>
-      </div>
-    </div>
-    <p class="price-foot">All plans include the full checkout enforcement and date-on-order — the core is never paywalled.</p>
-  </div>
-</section>
-
-<!-- ============ CTA ============ -->
-<section class="cta-band">
-  <div class="wrap">
-    <div class="cta-inner">
-      <h2>Lock in every delivery date.</h2>
-      <p>Never lose a date — or a sale — again. DateLock is live on the Shopify App Store.</p>
-      <a class="btn btn-primary" href="{{ cta_url }}">{{ cta_txt }}
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
+<script src="{{ '/assets/js/picker.js' | relative_url }}" defer></script>

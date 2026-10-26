@@ -1,4 +1,4 @@
 ---
 layout: home
-title: DateLock — delivery dates that always land on the order
+title: DateLock — delivery dates on your Shopify orders
 ---

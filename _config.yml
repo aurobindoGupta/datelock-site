@@ -1,5 +1,5 @@
 title: DateLock
-description: The delivery date always lands on the order — and checkout never breaks.
+description: Customers pick a delivery date before checkout, checkout needs one to finish, and the date is saved on the Shopify order.
 url: https://getdatelock.com
 theme: minima
 permalink: pretty
