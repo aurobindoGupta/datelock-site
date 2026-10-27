@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Terms of Use
+description: "The terms for using the DateLock app on your Shopify store: the service, billing, uninstalling and your data, and liability."
 permalink: /terms-of-use/
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Data Processing Agreement
+description: "How DateLock processes personal data for merchants under the GDPR: roles, sub-processors, breaches, deletion and transfers."
 permalink: /data-processing-agreement/
 ---
 

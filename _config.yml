@@ -3,6 +3,18 @@ description: Customers pick a delivery date before checkout, checkout needs one 
 url: https://getdatelock.com
 theme: minima
 permalink: pretty
+logo: /assets/icon-512.png
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Link-preview image for every page
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/demo-poster.jpg
 
 # When the app is live on the Shopify App Store, set this to the listing URL
 # (e.g. https://apps.shopify.com/datelock). Blank = CTAs show "Get early access"
