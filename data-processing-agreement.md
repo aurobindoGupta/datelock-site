@@ -4,8 +4,6 @@ title: Data Processing Agreement
 permalink: /data-processing-agreement/
 ---
 
-# Data Processing Agreement
-
 _Last updated: 4 October 2026_
 
 This Data Processing Agreement ("DPA") is between the merchant operating a Shopify store ("**Merchant**", the **controller**) and **Aurobindo Gupta**, a solo developer operating the DateLock app ("**DateLock**", "we", the **processor**). It supplements our [Privacy Policy]({{ '/privacy-policy/' | relative_url }}) and governs how DateLock processes personal data on the Merchant's behalf. "Controller", "processor", "personal data", "processing", and "personal data breach" have the meanings given in the GDPR (Regulation (EU) 2016/679).

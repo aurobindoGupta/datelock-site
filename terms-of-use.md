@@ -4,8 +4,6 @@ title: Terms of Use
 permalink: /terms-of-use/
 ---
 
-# Terms of Use
-
 _Last updated: 2 October 2026_
 
 These Terms govern your use of the **DateLock** Shopify app. By installing or using DateLock, you agree to these Terms.
