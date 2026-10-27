@@ -299,6 +299,12 @@ h3 { font-size: 1.1875rem; font-weight: 680; line-height: 1.25; }
 .bill-opt[aria-pressed="true"] { background: var(--forest); color: #fff; }
 .price-notes { margin: 32px auto 0; padding-left: 1.1em; max-width: 41.1em; color: var(--ink-2); font-size: 0.9375rem; display: grid; gap: 8px; }
 
+/* FAQ */
+.faq div { padding: 18px 0; border-top: 1px solid var(--line); }
+.faq div:last-child { border-bottom: 1px solid var(--line); }
+.faq h3 { font-weight: 720; font-stretch: 88%; font-size: 1.0625rem; }
+.faq p { margin-top: 6px; color: var(--ink-2); max-width: 40em; }
+
 /* Closing */
 .closing { padding-top: 0; }
 .closing-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding-top: clamp(48px, 7vw, 80px); border-top: 1px solid var(--line); }

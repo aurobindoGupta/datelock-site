@@ -208,6 +208,52 @@ layout: default
   </div>
 </section>
 
+<section class="section" id="faq">
+  <div class="wrap split split-rules">
+    <div class="prose">
+      <h2>Questions</h2>
+    </div>
+    <div class="faq">
+      <div>
+        <h3>Can I make customers choose a delivery date before checkout on Shopify?</h3>
+        <p>Yes. DateLock adds a delivery date calendar to your store. Once you turn on enforcement in the app, a Shopify checkout rule stops any checkout that has no valid date and asks the customer to choose one.</p>
+      </div>
+      <div>
+        <h3>Does it work with Buy it now and express checkout?</h3>
+        <p>When a customer taps Buy it now, the calendar opens first. Shopify runs our checkout rule on express checkouts like Shop Pay and PayPal too.</p>
+      </div>
+      <div>
+        <h3>Where does the date show on the order?</h3>
+        <p>In three places on the Shopify order: under Additional details (<code>delivery_date 2026-10-31</code>), as a Delivery date metafield that other apps can read, and as a tag (<code>Delivery: 2026-10-31</code>) you can filter your orders by. Customers see it on the thank-you and order status pages once you add our blocks (Shopify Basic and up). They also see it in the confirmation email after you paste in a snippet once.</p>
+      </div>
+      <div>
+        <h3>What happens if DateLock has a problem during checkout?</h3>
+        <p>The checkout goes through. If our checkout rule can’t run, you might miss a date, but never a sale. The <code>DateLock: missing-date</code> tag tells you which order to follow up. This relies on Shopify’s “Block checkout if app experiences a problem” setting staying off, which is the default.</p>
+      </div>
+      <div>
+        <h3>Which delivery rules can I set?</h3>
+        <p>A daily cutoff time, a lead time, and blackout dates for holidays or fully booked days. Start from the Bakery, Florist or Meal-kit preset and adjust it. Days you can’t deliver are greyed out on the calendar. Staff can also add a delivery date to a draft order for phone orders.</p>
+      </div>
+      <div>
+        <h3>Does it support pickup or delivery time slots?</h3>
+        <p>No. DateLock collects one delivery date per order. It doesn’t offer pickup locations or time slots.</p>
+      </div>
+      <div>
+        <h3>Will it change my theme code?</h3>
+        <p>No. DateLock is a theme app embed you switch on in the theme editor. It doesn’t edit your theme code, and when you uninstall, Shopify removes the embed from your theme.</p>
+      </div>
+      <div>
+        <h3>What does it cost?</h3>
+        <p>Free covers 50 dated orders a month with every feature. Pro is $14.99 a month or $149 a year for unlimited dated orders. Billing goes through Shopify, and only orders with a delivery date count. If you go over 50 on Free, we email you. 24 hours later, date collection pauses until the next month or until you upgrade, and checkout keeps working the whole time. Uninstall and billing stops.</p>
+      </div>
+      <div>
+        <h3>Which orders does DateLock not cover?</h3>
+        <p>Point of Sale sales, subscription renewals, and orders created by other apps. Shopify doesn’t run checkout rules on these, so DateLock can’t block them for a missing date.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section closing">
   <div class="wrap">
     <div class="closing-row">
