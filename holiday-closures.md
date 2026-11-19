@@ -2,14 +2,14 @@
 layout: guide
 title: Shopify Holiday Closures and Blackout Dates
 heading: Closed over Christmas and New Year? Keep taking orders.
-description: Close for the holidays without closing your Shopify store. Block the days you're shut, and customers can still order for any day after you reopen.
+description: A different take on Shopify vacation mode. Block the days you're closed over Christmas and New Year, and customers can still order for after you reopen.
 lead: Block the days you're closed. Customers can still order now for any day after you reopen, and with enforcement on, checkout won't accept a day you've blocked.
 last_modified_at: 2026-11-19
 ---
 
-## Closing the store vs. blocking the days
+## Vacation mode vs. blocking the days
 
-If you close your store while you're away, nobody can order, not even for a day after you're back.
+Looking for a vacation or holiday mode? If you pause or close your store while you're away, nobody can order, not even for a day after you're back.
 
 DateLock keeps your store open and blocks only the days you can't deliver. A customer shopping on 27 December can still order for 4 January.
 
@@ -48,3 +48,5 @@ Days that have passed move to their own list on the Delivery rules page. Click *
 ## What it doesn't cover
 
 Shopify doesn't run checkout rules on Point of Sale sales, subscription renewals or orders created by other apps, so DateLock can't stop those for a day you're closed.
+
+On the Free plan, all of this covers 50 dated orders a month. Go over and we email you. 24 hours later, date collection pauses until the next month or until you upgrade, so the calendar and the checkout check stop too. Checkout keeps working the whole time.
