@@ -3,6 +3,7 @@ layout: page
 title: Terms of Use
 description: "The terms for using the DateLock app on your Shopify store: the service, billing, uninstalling and your data, and liability."
 permalink: /terms-of-use/
+last_modified_at: 2026-10-02
 ---
 
 _Last updated: 2 October 2026_

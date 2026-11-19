@@ -25,6 +25,8 @@ independently of the app, with no cold start.
 | `_layouts/`, `_includes/` | Page templates and shared partials |
 | `assets/` | Stylesheet, icons, screenshots, and demo media |
 
+Each page's `last_modified_at` front matter becomes its sitemap `<lastmod>`. Change it on every real content edit.
+
 ---
 
 © PandaTech. Site content and brand assets are proprietary; all rights reserved.

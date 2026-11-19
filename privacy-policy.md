@@ -3,6 +3,7 @@ layout: page
 title: Privacy Policy
 description: What the DateLock Shopify app collects and why, where it's stored, how long we keep it, and how to request deletion.
 permalink: /privacy-policy/
+last_modified_at: 2026-10-04
 ---
 
 _Last updated: 4 October 2026_
