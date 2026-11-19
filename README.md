@@ -19,6 +19,9 @@ independently of the app, with no cold start.
 | `terms-of-use.md` | Terms of Use |
 | `data-processing-agreement.md` | Merchant Data Processing Agreement (GDPR Art. 28) |
 | `holiday-closures.md` | Guide: closing for the holidays with blackout dates |
+| `add-delivery-date-shopify.md` | Guide: short answer to "how to add a delivery date in Shopify", links into the setup guide |
+| `bakery.md` | Guide: DateLock for bakeries (Bakery preset, notice, closed days, daily tag) |
+| `florist.md` | Guide: DateLock for florists (same-day cutoff, busy weeks, phone orders); no Buy it now or card-message claims while F7 is open |
 | `setup-guide.md` | Guide: full setup, step by step (mirrors the app home page; the email snippet is copied from `EMAIL_SNIPPET` in the app's `app._index.tsx`, so change both together) |
 | `404.html` | Not-found page (GitHub Pages serves it with status 404) |
 | `favicon.ico` | Browser tab icon (16, 32, 48 px) |
