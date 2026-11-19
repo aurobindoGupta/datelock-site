@@ -355,6 +355,8 @@ h3 { font-size: 1.1875rem; font-weight: 680; line-height: 1.25; }
 .guide-body li + li { margin-top: 8px; }
 .guide-body strong { font-weight: 680; }
 .guide-body .shot { margin: 28px 0; }
+.guide-body pre { margin: 0 0 16px; padding: 16px; overflow-x: auto; background: var(--white); border: 1px solid var(--line); border-radius: 8px; font-size: 0.8125rem; line-height: 1.55; }
+.guide-body pre code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-stretch: normal; font-weight: 400; font-size: inherit; color: var(--ink); background: none; padding: 0; border-radius: 0; white-space: pre; }
 .guide-cta { margin-top: 48px; padding: 28px; border-radius: 12px; background: var(--white); border: 1px solid var(--line); }
 .guide-cta-title { font-size: 1.25rem; font-weight: 740; font-stretch: 85%; line-height: 1.25; }
 .guide-cta p + p { margin-top: 6px; color: var(--ink-2); }
