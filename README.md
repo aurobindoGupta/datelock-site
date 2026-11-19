@@ -18,6 +18,7 @@ independently of the app, with no cold start.
 | `privacy-policy.md` | Privacy Policy |
 | `terms-of-use.md` | Terms of Use |
 | `data-processing-agreement.md` | Merchant Data Processing Agreement (GDPR Art. 28) |
+| `holiday-closures.md` | Guide: closing for the holidays with blackout dates |
 | `404.html` | Not-found page (GitHub Pages serves it with status 404) |
 | `favicon.ico` | Browser tab icon (16, 32, 48 px) |
 | `robots.txt` | Lets every crawler in and points to `sitemap.xml` (built by jekyll-sitemap) |
