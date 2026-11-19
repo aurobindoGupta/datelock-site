@@ -1,0 +1,29 @@
+---
+layout: default
+---
+{%- if site.app_store_url and site.app_store_url != "" -%}
+{%- assign cta_url = site.app_store_url -%}{%- assign cta_txt = "Add to Shopify" -%}
+{%- else -%}
+{%- assign cta_url = "mailto:aurogpt10@gmail.com?subject=DateLock%20early%20access" -%}{%- assign cta_txt = "Get early access" -%}
+{%- endif -%}
+
+<article class="guide">
+  <div class="wrap">
+    <header class="guide-head">
+      <p class="eyebrow">Guide</p>
+      <h1>{{ page.heading | default: page.title | smartify }}</h1>
+      {% if page.lead %}<p class="lead">{{ page.lead | smartify }}</p>{% endif %}
+    </header>
+    <div class="guide-body">
+      {{ content }}
+    </div>
+    <aside class="guide-cta">
+      <p class="guide-cta-title">DateLock is free for 50 dated orders a month.</p>
+      <p>Every feature is included on every plan.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="{{ cta_url }}">{{ cta_txt }}</a>
+        <a class="btn btn-quiet" href="{{ '/#pricing' | relative_url }}">See pricing</a>
+      </div>
+    </aside>
+  </div>
+</article>
